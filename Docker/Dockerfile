@@ -9,6 +9,9 @@ RUN apt-get update
 # Install php-fpm environment
 RUN apt-get install php5-fpm php5-cli php5-mysql -y
 
+# Install gd library
+RUN apt-get install php5-gd -y
+
 # Create user for volume access
 RUN (adduser --system --uid=1000 --gid=50 \
         --home /home/guest --shell /bin/bash guest)
