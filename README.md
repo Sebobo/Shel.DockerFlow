@@ -19,19 +19,27 @@ Copy nginx project vhost config `Docker/Config/nginx_vhost.conf.sample` into the
 
 ## Install Flow or Neos into the distribution folder
 
-## Run it
+## Run it 
 
-`fig up -d`
+    `bin/fig up -d`
+
+`-d` will let it stay in the background.
+
+## Check the status
+
+    `bin/fig ps`
+
+This will show the running containers. The `data` container can be inactive to work. 
 
 # Tipps & Tricks
 
 ## Running a shell in one of the service containers
 
-`fig run SERVICE /bin/bash`
+    `bin/fig run SERVICE /bin/bash`
 
 ## Check open ports in a container
 
-`fig run SERVICE netstat --listen`
+    `bin/fig run SERVICE netstat --listen`
 
 # Further reading
 

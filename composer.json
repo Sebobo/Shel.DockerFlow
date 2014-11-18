@@ -12,5 +12,8 @@
       "homepage": "http://www.sebastianhelzle.net",
       "role": "Developer"
     }
+  ],
+  "bin": [
+    "bin/fig.sh"
   ]
 }

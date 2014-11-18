@@ -1,0 +1,10 @@
+#!/bin/sh
+
+dirname=`pwd`
+projectname=${PWD##*/}
+
+# Wrap fig command to use config from package
+echo "### dockerflow is executing command with fig ###"
+fig -p $projectname -f Packages/Libraries/sebastianhelzle/dockerflow/fig.yml $*
+
+
