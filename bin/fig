@@ -6,8 +6,8 @@ config_dir="${package_dir}/Configuration"
 
 # Generate project name from folder name
 projectname=${PWD##*/}
-projectname=${projectname// /_}
-projectname=`echo $projectname | tr '[A-Z]' '[a-z]'`
+projectname=`echo ${projectname// /_}`
+projectname=`echo ${projectname} | tr '[A-Z]' '[a-z]'`
 
 # Use the projects folder name as servername
 DOCKER_FLOW_SERVERNAME=$projectname
