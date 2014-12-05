@@ -8,14 +8,9 @@
 
     http://www.fig.sh/install.html
 
-
 ## Change settings where needed
 
-server_name: Docker/Config/nginx_vhost.conf
-
-## Setup project vhost
-
-Copy nginx project vhost config `Docker/Config/nginx_vhost.conf.sample` into the Web folder of the project and name it `.nginx.conf`
+Docker/Config/nginx_vhost.conf
 
 ## Install Flow or Neos into the distribution folder
 
