@@ -1,7 +1,7 @@
 app:
   build: Packages/Libraries/sebastianhelzle/dockerflow/
-  hostname: shneos
-  domainname: shneos.dev
+  hostname: dockerflow
+  domainname: dockerflow
   volumes:
     - Packages/Libraries/sebastianhelzle/dockerflow/Configuration/php-fpm.conf:/etc/php5/fpm/php-fpm.conf:ro
     - Packages/Libraries/sebastianhelzle/dockerflow/Configuration/www.conf:/etc/php5/fpm/pool.d/www.conf:ro
