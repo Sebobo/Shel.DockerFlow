@@ -12,7 +12,7 @@ RUN apt-get install php5-fpm php5-cli php5-mysql -y
 # Install gd library
 RUN apt-get install php5-gd -y
 
-# Create user for volume access
+# Create user for volume access (Needed for Mac OS)
 RUN (adduser --system --uid=1000 --gid=50 \
         --home /home/guest --shell /bin/bash guest)
 

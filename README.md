@@ -1,5 +1,7 @@
 # How to get it running
 
+DockerFlow will create the necessary Docker containers to start your TYPO3 Flow/Neos distribution.
+
 ## Install docker
 
     https://docs.docker.com/installation/
@@ -7,10 +9,6 @@
 ## Install fig
 
     http://www.fig.sh/install.html
-
-## Change settings where needed
-
-Docker/Config/nginx_vhost.conf
 
 ## Install Flow or Neos into the distribution folder
 
@@ -27,6 +25,10 @@ Docker/Config/nginx_vhost.conf
 This will show the running containers. The `data` container can be inactive to work. 
 
 # Tipps & Tricks
+
+## Using different FLOW_CONTEXT
+
+    `FLOW_CONTEXT=Production bin/fig up -d`
 
 ## Running a shell in one of the service containers
 

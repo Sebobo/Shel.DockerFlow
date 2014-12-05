@@ -1,5 +1,5 @@
 app:
-  build: .
+  build: Packages/Libraries/sebastianhelzle/dockerflow/
   hostname: shneos
   domainname: shneos.dev
   volumes:
@@ -18,23 +18,21 @@ data:
   image: dockerfile/mariadb:latest
   command: echo "Data container has started"
   volumes:
-    - .:/code
+    - .:/var/www
     - /var/lib/mysql
 
 db:
   image: dockerfile/mariadb:latest
-  ports:
-    - "3306:3306"
   volumes_from:
     - data
 
 web:
   image: nginx:1.7
   ports:
-    - "80:80"
+    - "8080:8080"
   volumes:
     - Packages/Libraries/sebastianhelzle/dockerflow/Configuration/nginx.conf:/etc/nginx/nginx.conf:ro
-    - Packages/Libraries/sebastianhelzle/dockerflow/Configuration/nginx_vhost.conf:/etc/nginx/conf.d/default.conf:ro
+    - Packages/Libraries/sebastianhelzle/dockerflow/Configuration/nginx_vhost_merged.conf:/etc/nginx/conf.d/default.conf:ro
   volumes_from:
     - data
   links:
