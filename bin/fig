@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 dirname=`pwd`
 package_dir="Packages/Libraries/sebastianhelzle/dockerflow"
@@ -10,13 +10,13 @@ projectname=`echo ${projectname// /_}`
 projectname=`echo ${projectname} | tr '[A-Z]' '[a-z]'`
 
 # Use the projects folder name as servername
-DOCKER_FLOW_SERVERNAME=$projectname
+DOCKER_FLOW_SERVERNAME=${projectname}
 
 # Use Development context if Flow Context is not set
 DOCKER_FLOW_CONTEXT=${FLOW_CONTEXT:=Development}
 
 # Replace the markers in the merge config file
-sed -e "s/DOCKER_FLOW_SERVERNAME/${DOCKER_FLOW_SERVERNAME}/g;s/DOCKER_FLOW_CONTEXT/${DOCKER_FLOW_CONTEXT}/g" $config_dir/nginx_vhost.conf > $config_dir/nginx_vhost_merged.conf
+sed -e "s/DOCKER_FLOW_SERVERNAME/${DOCKER_FLOW_SERVERNAME}/g;s/DOCKER_FLOW_CONTEXT/${DOCKER_FLOW_CONTEXT}/g" ${config_dir}/nginx_vhost.conf > ${config_dir}/nginx_vhost_merged.conf
 
 echo "####"
 echo "### Project name: ${projectname} ###"
@@ -26,9 +26,9 @@ echo "### DockerFlow is now executing... ###"
 echo "####"
 
 # Wrap fig command to use config from package
-fig -p "$projectname" -f $package_dir/fig.yml $*
+fig -p "${projectname}" -f ${package_dir}/fig.yml $*
 
-used_port=`fig -p "$projectname" -f $package_dir/fig.yml ps | grep _web_ | sed  's/^.*\:\([0-9]*\).*$/\1/g'`
+used_port=`fig -p "${projectname}" -f ${package_dir}/fig.yml ps | grep _web_ | sed  's/^.*\:\([0-9]*\).*$/\1/g'`
 echo "####"
-echo "### Done! Your app is running here: $projectname:$used_port"
+echo "### Done! Your app is running here: ${projectname}:${used_port}"
 echo "####"
