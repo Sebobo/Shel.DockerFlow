@@ -1,5 +1,5 @@
 {
-  "name": "sebastianhelzle/dockerflow",
+  "name": "shel/dockerflow",
   "description": "Fig/Docker structure to quickly startup TYPO3 Flow/Neos projects",
   "license": "MIT",
   "require": {
@@ -14,6 +14,6 @@
     }
   ],
   "bin": [
-    "bin/fig"
+    "bin/dockerflow"
   ]
 }
