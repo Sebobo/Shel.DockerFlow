@@ -4,13 +4,21 @@ dirname=`pwd`
 package_dir="Packages/Libraries/shel/dockerflow"
 config_dir="${package_dir}/Configuration"
 
+action=$1
+
 # Generate project name from folder name
 projectname=${PWD##*/}
 projectname=`echo ${projectname// /_}`
 projectname=`echo ${projectname} | tr '[A-Z]' '[a-z]'`
 
+# Wrap fig command to use config from package
+wrapped_command="fig -p \"${projectname}\" -f ${package_dir}/fig.yml"
+
 # Use the projects folder name as servername
 DOCKER_FLOW_SERVERNAME=${projectname}
+
+# Default port for dockerflow
+DOCKER_FLOW_PORT=8080
 
 # Use Development context if Flow Context is not set
 DOCKER_FLOW_CONTEXT=${FLOW_CONTEXT:=Development}
@@ -22,13 +30,16 @@ echo "####"
 echo "### Project name: ${projectname} ###"
 echo "### FLOW_CONTEXT: ${DOCKER_FLOW_CONTEXT} ###"
 echo "###"
-echo "### DockerFlow is now executing... ###"
+echo "### DockerFlow is now running action '${action}' ###"
 echo "####"
 
 # Wrap fig command to use config from package
-fig -p "${projectname}" -f ${package_dir}/fig.yml $*
+${wrapped_command} $*
 
-used_port=`fig -p "${projectname}" -f ${package_dir}/fig.yml ps | grep _web_ | sed  's/^.*\:\([0-9]*\).*$/\1/g'`
-echo "####"
-echo "### Done! Your app is running here: ${projectname}:${used_port}"
-echo "####"
+# Print information about running app container
+if [ "$action" = "up" ]; then
+	used_port=`${wrapped_command} port web ${DOCKER_FLOW_PORT} | sed 's/^.*\:\([0-9]*\).*$/\1/g'`
+	echo "####"
+	echo "### Done! Your app is running here: ${projectname}:${used_port}"
+	echo "####"
+fi
