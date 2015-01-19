@@ -1,12 +1,9 @@
 app:
-  build: Packages/Libraries/shel/dockerflow/
+  # For development of the image comment out the 'image' line and replace with the next line
+  # build: Packages/Libraries/shel/dockerflow/
+  image: sebobo/shel.dockerflow
   hostname: dockerflow
   domainname: dockerflow
-  volumes:
-    - Packages/Libraries/shel/dockerflow/Configuration/php-fpm.conf:/etc/php5/fpm/php-fpm.conf:ro
-    - Packages/Libraries/shel/dockerflow/Configuration/www.conf:/etc/php5/fpm/pool.d/www.conf:ro
-    - Packages/Libraries/shel/dockerflow/Configuration/php.ini:/etc/php5/fpm/php.ini:ro
-    - Packages/Libraries/shel/dockerflow/Configuration/php-cli.ini:/etc/php5/cli/php.ini:ro
   volumes_from:
     - data
   expose:
@@ -31,8 +28,8 @@ web:
   ports:
     - "8080:8080"
   volumes:
-    - Packages/Libraries/shel/dockerflow/Configuration/nginx.conf:/etc/nginx/nginx.conf:ro
-    - Packages/Libraries/shel/dockerflow/Configuration/nginx_vhost_merged.conf:/etc/nginx/conf.d/default.conf:ro
+    - Packages/Libraries/shel/dockerflow/Configuration/Web/nginx.conf:/etc/nginx/nginx.conf:ro
+    - Packages/Libraries/shel/dockerflow/Configuration/Web/nginx_vhost_merged.conf:/etc/nginx/conf.d/default.conf:ro
   volumes_from:
     - data
   links:

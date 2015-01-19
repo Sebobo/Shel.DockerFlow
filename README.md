@@ -1,8 +1,12 @@
 # How to get it running
 
 DockerFlow will create the necessary Docker containers to easily start your TYPO3 Flow/Neos distribution.
-The package provides a wrapper script in `bin/fig` to simplify the handling of docker and basic configurations
+The package provides a wrapper script in `bin/dockerflow` to simplify the handling of docker and basic configurations
 optimized for TYPO3 Neos.
+
+The repository contains a Dockerfile which will automatically be build in the
+[docker hub](https://registry.hub.docker.com/u/sebobo/shel.dockerflow/) after each change
+and used by fig to build the necessary containers.
 
 ## Install docker
 
@@ -20,7 +24,7 @@ optimized for TYPO3 Neos.
 
 ## Run it in the background
 
-    `bin/fig up -d`
+    `bin/dockerflow up -d`
     
 The command will echo the url with which you can access your project.
 The default database credentials for Flow are:
@@ -45,13 +49,19 @@ This will show the running containers. The `data` container can be inactive to w
 
 ## Using different FLOW_CONTEXT
 
-    `FLOW_CONTEXT=Production bin/fig up -d`
+    `FLOW_CONTEXT=Production bin/dockerflow up -d`
 
 ## Running a shell in one of the service containers
 
-    `bin/fig run SERVICE /bin/bash`
+    `bin/dockerflow run SERVICE /bin/bash`
     
 SERVICE can currently be `app`, `web`, `data` or `db`.
+
+## Attach to a running service
+
+Run `docker ps` and copy the containers id that you want to attach to.
+
+Run `docker exec -it <containerid> /bin/bash` with the id you just copied.
 
 ## Keep Flow cache in the container to improve performance (especially with boot2docker)
 
@@ -65,7 +75,7 @@ Add this setting to your Flow `Settings.yaml`
 
 ## Check open ports in a container
 
-    `bin/fig run SERVICE netstat --listen`
+    `bin/dockerflow run SERVICE netstat --listen`
 
 # Further reading
 
