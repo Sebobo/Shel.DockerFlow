@@ -1,7 +1,8 @@
+# App container which provides the php environment
 app:
   # For development of the image comment out the 'image' line and replace with the next line
-  # build: Packages/Libraries/shel/dockerflow/
-  image: sebobo/shel.dockerflow
+  #build: Packages/Libraries/shel/dockerflow/
+  image: sebobo/shel.dockerflow:latest
   hostname: dockerflow
   domainname: dockerflow
   volumes_from:
@@ -11,6 +12,7 @@ app:
   links:
     - db
 
+# Passive data container which only provides a shared filesystem for the other containers
 data:
   image: dockerfile/mariadb:latest
   command: echo "Data container has started"
