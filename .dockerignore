@@ -1,1 +1,5 @@
 .git
+.gitignore
+composer.json
+fig.yml
+bin
