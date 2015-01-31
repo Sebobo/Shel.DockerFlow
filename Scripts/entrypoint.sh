@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Exit with error if a command returns a non-zero status
 set -e
 
 # Get id of the owner
@@ -24,6 +26,10 @@ if [ -d /var/www ]; then
 			usermod -u $user_id guest
 		fi
 	fi
+fi
+
+if [ "$1" = 'flow' ]; then
+	exec /var/www/flow "$@"
 fi
 
 # Run normal command

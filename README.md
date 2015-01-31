@@ -24,7 +24,7 @@ and used by fig to build the necessary containers.
 
 ## Run it in the background
 
-    `bin/dockerflow up -d`
+    bin/dockerflow up -d
     
 The command will echo the url with which you can access your project.
 The default database credentials for Flow are:
@@ -41,7 +41,7 @@ The default database credentials for Flow are:
 
 ## Check the status
 
-    `bin/fig ps`
+    bin/dockerflow ps
 
 This will show the running containers. The `data` container can be inactive to work.
 
@@ -49,11 +49,17 @@ This will show the running containers. The `data` container can be inactive to w
 
 ## Using different FLOW_CONTEXT
 
-    `FLOW_CONTEXT=Production bin/dockerflow up -d`
+    FLOW_CONTEXT=Production bin/dockerflow up -d
+    
+## Runnig flow commands
+
+We added a little helper to run Flow commands without the whole path. Example:
+
+    bin/dockerflow run app flow --help
 
 ## Running a shell in one of the service containers
 
-    `bin/dockerflow run SERVICE /bin/bash`
+    bin/dockerflow run SERVICE /bin/bash
     
 SERVICE can currently be `app`, `web`, `data` or `db`.
 
@@ -75,7 +81,7 @@ Add this setting to your Flow `Settings.yaml`
 
 ## Check open ports in a container
 
-    `bin/dockerflow run SERVICE netstat --listen`
+    bin/dockerflow run SERVICE netstat --listen
 
 # Further reading
 
