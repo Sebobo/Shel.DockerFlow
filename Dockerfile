@@ -21,7 +21,7 @@ COPY Configuration/App/php-cli.ini  /etc/php5/cli/
 
 # Script which wraps all commands
 COPY Scripts/entrypoint.sh /usr/bin/
-ENTRYPOINT ["/usr/bin/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/usr/bin/entrypoint.sh"]
 
 # By default start sendmail service and php-fpm
 CMD service sendmail start && php5-fpm
