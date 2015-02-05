@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     sendmail
 
 # Configure sendmail by sending "Yes" to all questions
-RUN echo "Y\nY\nY\n" | sendmailconfig
+RUN echo "define(confDOMAIN_NAME, dockerflow.dev)dnl" >> /etc/mail/sendmail.mc && echo "Y\nY\nY\n" | sendmailconfig
+
 # Clean up APT
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 

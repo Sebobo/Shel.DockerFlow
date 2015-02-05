@@ -4,7 +4,7 @@ app:
   #build: Packages/Libraries/shel/dockerflow/
   image: sebobo/shel.dockerflow:latest
   hostname: dockerflow
-  domainname: dockerflow
+  domainname: dev
   volumes_from:
     - data
   expose:
