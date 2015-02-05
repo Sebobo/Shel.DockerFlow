@@ -20,11 +20,12 @@ COPY Configuration/App/www.conf     /etc/php5/fpm/pool.d/
 COPY Configuration/App/php-cli.ini  /etc/php5/cli/
 
 # Script which wraps all commands
-COPY Scripts/entrypoint.sh /usr/bin/
-ENTRYPOINT ["/bin/bash", "/usr/bin/entrypoint.sh"]
+COPY Scripts/entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["/bin/bash", "/usr/local/bin/entrypoint.sh"]
 
 # By default start sendmail service and php-fpm
-CMD service sendmail start && php5-fpm
+COPY Scripts/start.sh /usr/local/bin/
+CMD /usr/local/bin/start.sh
 
 # Open port for php-fpm
 EXPOSE 9000
