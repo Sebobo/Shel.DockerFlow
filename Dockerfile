@@ -1,5 +1,5 @@
 # Pull base image
-FROM ubuntu:14.04
+FROM phusion/baseimage:0.9.16
 
 MAINTAINER Sebastian Helzle sebastian@helzle.net
 
@@ -14,8 +14,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Configure sendmail by sending "Yes" to all questions
 RUN echo "define(confDOMAIN_NAME, dockerflow.dev)dnl" >> /etc/mail/sendmail.mc && echo "Y\nY\nY\n" | sendmailconfig
 
-# Clean up APT
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Copy configuration files for php
 COPY Configuration/App/php.ini Configuration/App/php-fpm.conf /etc/php5/fpm/
@@ -26,9 +26,11 @@ COPY Configuration/App/php-cli.ini  /etc/php5/cli/
 COPY Scripts/entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["/bin/bash", "/usr/local/bin/entrypoint.sh"]
 
-# By default start sendmail service and php-fpm
-COPY Scripts/start.sh /usr/local/bin/
-CMD /usr/local/bin/start.sh
+# Add run script to start sendmail and php-fpm
+RUN mkdir /etc/service/dockerflow
+COPY Scripts/start.sh /etc/service/dockerflow/run
+
+CMD ["/sbin/my_init"]
 
 # Open port for php-fpm
 EXPOSE 9000

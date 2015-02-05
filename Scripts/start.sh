@@ -7,4 +7,4 @@ set -e
 service sendmail start
 
 # Run php-fpm as last process that keeps running, otherwise docker container will exit
-php5-fpm
+exec php5-fpm
