@@ -29,6 +29,7 @@ if [ -d /var/www ]; then
 fi
 
 if [ "$1" = 'flow' ]; then
+	shift
 	exec /var/www/flow "$@"
 fi
 
