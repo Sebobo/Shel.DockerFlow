@@ -65,9 +65,9 @@ SERVICE can currently be `app`, `web`, `data` or `db`.
 
 ## Attach to a running service
 
-Run `docker ps` and copy the containers id that you want to attach to.
+Run `bin/dockerflow ps` and copy the containers name that you want to attach to.
 
-Run `docker exec -it <containerid> /bin/bash` with the id you just copied.
+Run `docker exec -it <containername> /bin/bash` with the name you just copied.
 
 ## Keep Flow cache in the container to improve performance (especially with boot2docker)
 
