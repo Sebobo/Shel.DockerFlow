@@ -11,6 +11,7 @@ app:
     - "9000"
   links:
     - db
+    - mail
 
 # Passive data container which only provides a shared filesystem for the other containers
 data:
@@ -38,3 +39,8 @@ web:
     - data
   links:
     - app
+
+mail:
+  image: mailhog/mailhog:latest
+  ports:
+    - "8025:8025"
