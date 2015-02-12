@@ -1,12 +1,14 @@
-# How to get it running
+# Dockerflow helps you developing TYPO3 Flow and Neos projects
 
-DockerFlow will create the necessary Docker containers to easily start your TYPO3 Flow/Neos distribution.
-The package provides a wrapper script in `bin/dockerflow` to simplify the handling of docker and basic configurations
-optimized for TYPO3 Neos.
+DockerFlow creates the necessary Docker containers (webserver, database, php, mail) to run 
+your TYPO3 Flow/Neos project. The package provides a wrapper script in `bin/dockerflow` which simplifies the 
+handling of docker and does all the configuration necessary.
 
-The repository contains a Dockerfile which will automatically be build in the
-[docker hub](https://registry.hub.docker.com/u/sebobo/shel.dockerflow/) after each change
-and used by fig to build the necessary containers.
+We created this package to make development on TYPO3 Flow and Neos projects easier and to create a simple 
+reusable package which can easily be maintained and serves well for the standard project.
+
+Development will continue further as the package is already reused in several projects.
+Contributions and feedback are very welcome.
 
 ## Install docker
 
@@ -14,20 +16,37 @@ and used by fig to build the necessary containers.
 
 ## Install fig
 
+We use fig to do all the automatic configuration:
+
     http://www.fig.sh/install.html
 
-## With a Mac or Windows install boot2docker
+The repository contains a Dockerfile which will automatically be build in the
+[docker hub](https://registry.hub.docker.com/u/sebobo/shel.dockerflow/) after each change
+and used by fig to build the necessary containers.
 
-    http://boot2docker.io/
+## On a Mac or Windows install boot2docker
 
-## Install Flow or Neos into the distribution folder
+    http://boot2docker.io
+    
+You will not have a performance as good as on linux but it's workable.
+Checkout the [boot2docker support](https://github.com/Sebobo/Shel.DockerFlow/tree/boot2docker-support) branch of
+dockerflow for a Vagrantfile which builds a boot2docker instance with working NFS shared.
+This makes it much faster (still not as fast as on linux).
 
-## Run it in the background
+## Install dockerflow into your distribution
+
+Add `shel/dockerflow@dev-master` as dev dependency and run `composer install`.
+
+## Run dockerflow
 
     bin/dockerflow up -d
     
 The command will echo the url with which you can access your project.
-The default database credentials for Flow are:
+The parameter `-d` will keep it running until you run:
+
+    bin/dockerflow stop
+
+The default database configuration for your `Settings.yaml` is:
 
     TYPO3:
       Flow:
@@ -43,7 +62,7 @@ The default database credentials for Flow are:
 
     bin/dockerflow ps
 
-This will show the running containers. The `data` container can be inactive to work.
+This will show the running containers. The `data` container can be inactive to do it's work.
 
 # Tipps & Tricks
 
@@ -68,10 +87,11 @@ SERVICE can currently be `app`, `web`, `data` or `db`.
 Run `bin/dockerflow ps` and copy the containers name that you want to attach to.
 
 Run `docker exec -it <containername> /bin/bash` with the name you just copied.
+With this you can work in a running container instead of creating a new one.
 
 ## Keep Flow cache in the container to improve performance (especially with boot2docker)
 
-Add this setting to your Flow `Settings.yaml`
+Add this configuration to your `Settings.yaml` in Flow:
 
     TYPO3:
       Flow:
