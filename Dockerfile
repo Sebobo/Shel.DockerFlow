@@ -9,7 +9,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php5-cli \
     php5-mysql \
     php5-gd \
-    sendmail
+    sendmail \
+    sqlite \
+    php5-sqlite
 
 # Configure sendmail by sending "Yes" to all questions
 RUN echo "define(confDOMAIN_NAME, dockerflow.dev)dnl" >> /etc/mail/sendmail.mc && echo "Y\nY\nY\n" | sendmailconfig
