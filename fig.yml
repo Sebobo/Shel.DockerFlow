@@ -24,6 +24,8 @@ db:
   image: dockerfile/mariadb:latest
   volumes_from:
     - data
+  ports:
+    - "3307:3306"
 
 web:
   image: nginx:1.7
