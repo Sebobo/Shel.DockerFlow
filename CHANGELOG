@@ -1,0 +1,32 @@
+CHANGELOG
+=========
+
+0.0.1
+-----
+
+  - [TASK]    Update readme to include tests and database access docs
+  - [FEATURE] Replace sendmail with mailhog container
+  - [TASK]    Install sqlite for Flow testing
+  - [TASK]    Map database port outside
+  - [BUGFIX]  Error when running bin/dockerflow flow
+  - [TASK]    Define hostname for sendmail
+  - [TASK]    Helper to run flow commands directly
+  - [BUGFIX]  Run entrypoint and command with bash
+  - [TASK]    Auto create user in app container
+  - [TASK]    Added sendmail to app container
+  - [BUGFIX]  Allow output of non-php files in Web folder
+  - [TASK]    Only show host info when running "up"
+  - [TASK]    Change name for fig wrapper binary
+  - [TASK]    Use bash instead of shell in bin/fig
+  - [TASK]    Update readme & changed hostname to dockerflow
+  - [BUGFIX]  Bad substitution in fig.sh on linux
+  - [TASK]    Simplify dockerflow setup and config
+  - [REF]     Clean up of config files
+  - [TASK]    Added shell wrapper for fig to bin
+  - [TASK]    Removed apache configs and test files
+  - [TASK]    Add composer file
+  - [TASK]    Using data container for persistence
+  - [TASK]    Added gd lib to app container
+  - [TASK]    Mount distribution folder to containers
+  - [REF]     Add readme, fix indentation and some cleanup
+  - [TASK]    Initial commit
