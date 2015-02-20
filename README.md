@@ -20,7 +20,7 @@ We use fig to do all the automatic configuration:
 
     http://www.fig.sh/install.html
 
-The repository contains a Dockerfile which will automatically be build in the
+The repository contains a Dockerfile which will automatically be built in the
 [docker hub](https://registry.hub.docker.com/u/sebobo/shel.dockerflow/) after each change
 and used by fig to build the necessary containers.
 
@@ -42,8 +42,8 @@ Add `shel/dockerflow@dev-master` as dev dependency and run `composer install`.
     bin/dockerflow up -d
     
 The command will echo the url with which you can access your project.
-Add the hostname then to your `/etc/hosts` and set the ip to localhost or your boot2docker ip.
-The parameter `-d` will keep it running until you run:
+Add the hostname then to your `/etc/hosts` and set the ip to your docker host (default for linux is 0.0.0.0)
+or your boot2docker ip. The parameter `-d` will keep it running in the background until you run:
 
     bin/dockerflow stop
 
@@ -65,7 +65,7 @@ The default database configuration for your `Settings.yaml` is:
 
 This will show the running containers. The `data` container can be inactive to do it's work.
 
-# Tipps & Tricks
+# Tips & Tricks
 
 ## Using different FLOW_CONTEXT
 
@@ -77,20 +77,7 @@ We added a little helper to run Flow commands without the whole path. Example:
 
     bin/dockerflow run app flow --help
 
-## Running a shell in one of the service containers
-
-    bin/dockerflow run SERVICE /bin/bash
-    
-SERVICE can currently be `app`, `web`, `data` or `db`.
-
-## Attach to a running service
-
-Run `bin/dockerflow ps` and copy the containers name that you want to attach to.
-
-Run `docker exec -it <containername> /bin/bash` with the name you just copied.
-With this you can work in a running container instead of creating a new one.
-
-## Keep Flow cache in the container to improve performance (especially with boot2docker)
+## Keep Flow caches in the container to improve performance (especially with boot2docker)
 
 Add this configuration to your `Settings.yaml` in Flow:
 
@@ -99,7 +86,7 @@ Add this configuration to your `Settings.yaml` in Flow:
         utility:
           environment:
             temporaryDirectoryBase: /tmp/dockerflow/Temporary/
-            
+
 ## Using MailHog to test mailing
 
 Add this configuration to your`Settings.yaml`:
@@ -111,10 +98,44 @@ Add this configuration to your`Settings.yaml`:
            options:
              host: 'mail'
              port: 1025
-             
-And open `MyNeosProject:8025` in your browser (use your own hostname) to see your mails. 
+
+And open `MyNeosProject:8025` in your browser (use your own hostname) to see your mails.
 
 Send emails from your Flow app and have fun.
+
+## Running a shell in one of the service containers
+
+    bin/dockerflow run SERVICE /bin/bash
+
+SERVICE can currently be `app`, `web`, `data` or `db`.
+
+## Access database inside container from docker host
+
+While you can easily login to shell of the `db` container with `bin/dockerflow run db /bin/bash`
+and execute your mysql commands, there are some cases that you want to run mysql commands directly
+from your host without having to login to the `db` container first. One of the best use cases,
+for example, is to access the databases inside the container from MySQL Workbench tool.
+To be able to do that, we have mapped database port inside the container (which is `3306`) to your
+host machine through `3307` port.
+
+![Screenshot of MySQL Workbench interface](/docs/MySQL-Workbench.png "MySQL Workbench interface")
+
+## Running functional test for Flow package
+
+DockerFlow installs by default `sqlite` in the base image so that functional tests can be run out-of-the-box.
+Example below is for running all functional tests of TYPO3.Flow package in one-off command:
+
+    bin/dockerflow run app /var/www/bin/phpunit -c /var/www/Build/BuildEssentials/PhpUnit/FunctionalTests.xml /var/www/Packages/Framework/TYPO3.Flow/Tests/Functional/
+
+Make sure you run composer install with `--dev` mode when setting up your Flow project
+and adjust the path to the test directory of your own package.
+
+## Attach to a running service
+
+Run `bin/dockerflow ps` and copy the container's name that you want to attach to.
+
+Run `docker exec -it <containername> /bin/bash` with the name you just copied.
+With this you can work in a running container instead of creating a new one.
 
 ## Check open ports in a container
 
