@@ -42,6 +42,7 @@ Add `shel/dockerflow@dev-master` as dev dependency and run `composer install`.
     bin/dockerflow up -d
     
 The command will echo the url with which you can access your project.
+Add the hostname then to your `/etc/hosts` and set the ip to localhost or your boot2docker ip.
 The parameter `-d` will keep it running until you run:
 
     bin/dockerflow stop
@@ -98,6 +99,22 @@ Add this configuration to your `Settings.yaml` in Flow:
         utility:
           environment:
             temporaryDirectoryBase: /tmp/dockerflow/Temporary/
+            
+## Using MailHog to test mailing
+
+Add this configuration to your`Settings.yaml`:
+
+    TYPO3:
+      SwiftMailer:
+         transport:
+           type: 'Swift_SmtpTransport'
+           options:
+             host: 'mail'
+             port: 1025
+             
+And open `MyNeosProject:8025` in your browser (use your own hostname) to see your mails. 
+
+Send emails from your Flow app and have fun.
 
 ## Check open ports in a container
 
@@ -105,10 +122,10 @@ Add this configuration to your `Settings.yaml` in Flow:
 
 # Further reading
 
-* blog post on php-fpm - http://mattiasgeniar.be/2014/04/09/a-better-way-to-run-php-fpm/
-* nginx+php-fpm+mysql tutorial - http://www.lonelycoder.be/nginx-php-fpm-mysql-phpmyadmin-on-ubuntu-12-04/
-* Docker documentation - http://docs.docker.com/reference/builder/
-* fig configuration for another docker Neos project - https://github.com/million12/docker-typo3-neos/blob/master/fig.yml
-* fig documentation - http://www.fig.sh/yml.html
-* nginx.conf for FLow - https://gist.github.com/iwyg/4c8c0c0dec21dcfc8969
-* boot2docker version which supports nfs - https://vagrantcloud.com/yungsang/boxes/boot2docker
+* [blog post on php-fpm](http://mattiasgeniar.be/2014/04/09/a-better-way-to-run-php-fpm/)
+* [nginx+php-fpm+mysql tutorial](http://www.lonelycoder.be/nginx-php-fpm-mysql-phpmyadmin-on-ubuntu-12-04/)
+* [Docker documentation](http://docs.docker.com/reference/builder/)
+* [fig documentation](http://www.fig.sh/yml.html)
+* [nginx.conf for Flow](https://gist.github.com/iwyg/4c8c0c0dec21dcfc8969)
+* [boot2docker version which supports nfs](https://vagrantcloud.com/yungsang/boxes/boot2docker)
+* [MailHog](https://github.com/mailhog/MailHog/)

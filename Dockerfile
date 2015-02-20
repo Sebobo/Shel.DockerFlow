@@ -9,12 +9,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php5-cli \
     php5-mysql \
     php5-gd \
-    sendmail \
     sqlite \
     php5-sqlite
-
-# Configure sendmail by sending "Yes" to all questions
-RUN echo "define(confDOMAIN_NAME, dockerflow.dev)dnl" >> /etc/mail/sendmail.mc && echo "Y\nY\nY\n" | sendmailconfig
 
 # Clean up APT
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -28,9 +24,8 @@ COPY Configuration/App/php-cli.ini  /etc/php5/cli/
 COPY Scripts/entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["/bin/bash", "/usr/local/bin/entrypoint.sh"]
 
-# By default start sendmail service and php-fpm
-COPY Scripts/start.sh /usr/local/bin/
-CMD /usr/local/bin/start.sh
+# By default start php-fpm
+CMD php5-fpm
 
 # Open port for php-fpm
 EXPOSE 9000
