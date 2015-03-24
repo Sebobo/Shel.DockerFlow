@@ -4,16 +4,15 @@ FROM ubuntu:14.04
 MAINTAINER Sebastian Helzle sebastian@helzle.net
 
 # Install packages as per recommendation (https://docs.docker.com/articles/dockerfile_best-practices/)
+# And clean up APT
 RUN apt-get update && apt-get install -y --no-install-recommends \
     php5-fpm \
     php5-cli \
     php5-mysql \
     php5-gd \
     sqlite \
-    php5-sqlite
-
-# Clean up APT
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+    php5-sqlite \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Copy configuration files for php
 COPY Configuration/App/php.ini Configuration/App/php-fpm.conf /etc/php5/fpm/
