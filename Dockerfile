@@ -27,5 +27,5 @@ ENTRYPOINT ["/bin/bash", "/usr/local/bin/entrypoint.sh"]
 # By default start php-fpm
 CMD php5-fpm
 
-# Open port for php-fpm
-EXPOSE 9000
+# Set workdir to project root
+WORKDIR /var/www
