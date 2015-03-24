@@ -1,5 +1,5 @@
 .git
 .gitignore
 composer.json
-fig.yml
+docker-compose.yml
 bin
