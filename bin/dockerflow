@@ -11,8 +11,8 @@ projectname=${PWD##*/}
 projectname=`echo ${projectname// /_}`
 projectname=`echo ${projectname} | tr '[A-Z]' '[a-z]'`
 
-# Wrap fig command to use config from package
-wrapped_command="fig -p \"${projectname}\" -f ${package_dir}/fig.yml"
+# Wrap docker-compose command to use config from package
+wrapped_command="docker-compose -p \"${projectname}\" -f ${package_dir}/docker-compose.yml"
 
 # Use the projects folder name as servername
 DOCKER_FLOW_SERVERNAME=${projectname}
@@ -33,7 +33,7 @@ echo "###"
 echo "### DockerFlow is now running action '${action}' ###"
 echo "####"
 
-# Wrap fig command to use config from package
+# Wrap docker-compose command to use config from package
 ${wrapped_command} $*
 
 # Print information about running app container

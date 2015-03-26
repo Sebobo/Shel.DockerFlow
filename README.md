@@ -14,15 +14,15 @@ Contributions and feedback are very welcome.
 
     https://docs.docker.com/installation/
 
-## Install fig
+## Install docker-compose
 
-We use fig to do all the automatic configuration:
+We use docker-compose to do all the automatic configuration:
 
-    http://www.fig.sh/install.html
+    http://docs.docker.com/compose/install/
 
 The repository contains a Dockerfile which will automatically be built in the
 [docker hub](https://registry.hub.docker.com/u/sebobo/shel.dockerflow/) after each change
-and used by fig to build the necessary containers.
+and used by docker-compose to build the necessary containers.
 
 ## On a Mac or Windows install boot2docker
 
@@ -146,7 +146,7 @@ With this you can work in a running container instead of creating a new one.
 * [blog post on php-fpm](http://mattiasgeniar.be/2014/04/09/a-better-way-to-run-php-fpm/)
 * [nginx+php-fpm+mysql tutorial](http://www.lonelycoder.be/nginx-php-fpm-mysql-phpmyadmin-on-ubuntu-12-04/)
 * [Docker documentation](http://docs.docker.com/reference/builder/)
-* [fig documentation](http://www.fig.sh/yml.html)
+* [docker-compose documentation](http://docs.docker.com/compose)
 * [nginx.conf for Flow](https://gist.github.com/iwyg/4c8c0c0dec21dcfc8969)
 * [boot2docker version which supports nfs](https://vagrantcloud.com/yungsang/boxes/boot2docker)
 * [MailHog](https://github.com/mailhog/MailHog/)
