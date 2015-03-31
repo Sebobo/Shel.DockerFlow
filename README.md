@@ -53,9 +53,9 @@ The default database configuration for your `Settings.yaml` is:
       Flow:
         persistence:
           backendOptions:
-            dbname: neos
+            dbname: dockerflow
             user: root
-            password: ''
+            password: root
             host: db
             driver: pdo_mysql
 

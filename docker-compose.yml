@@ -15,18 +15,21 @@ app:
 
 # Passive data container which only provides a shared filesystem for the other containers
 data:
-  image: dockerfile/mariadb:latest
+  image: mariadb:10.0
   command: echo "Data container has started"
   volumes:
     - .:/var/www
     - /var/lib/mysql
 
 db:
-  image: dockerfile/mariadb:latest
+  image: mariadb:10.0
   volumes_from:
     - data
   ports:
     - "3307:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: dockerflow
 
 web:
   image: nginx:1.7

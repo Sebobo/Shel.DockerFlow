@@ -4,7 +4,8 @@ CHANGELOG
 0.0.2-dev
 ---------
 
-  - [TASK] Switch from fig to docker-compose (Sebastian Helzle)
+  - [!!!TASK] Use official mariadb repositories (Sebastian Helzle)
+  - [TASK]    Switch from fig to docker-compose (Sebastian Helzle)
 
 0.0.1
 -----
