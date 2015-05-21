@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-0.0.2-dev
----------
+0.0.2
+-----
 
   - [TASK]    Install php module for imagemagick
   - [!!!TASK] Use official mariadb repositories (Sebastian Helzle)
