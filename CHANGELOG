@@ -4,6 +4,7 @@ CHANGELOG
 0.0.2-dev
 ---------
 
+  - [TASK]    Install php module for imagemagick
   - [!!!TASK] Use official mariadb repositories (Sebastian Helzle)
   - [TASK]    Switch from fig to docker-compose (Sebastian Helzle)
 

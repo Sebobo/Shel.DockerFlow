@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php5-cli \
     php5-mysql \
     php5-gd \
+    php5-imagick \
     sqlite \
     php5-sqlite \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
