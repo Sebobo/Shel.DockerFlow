@@ -4,7 +4,7 @@ CHANGELOG
 0.0.3-dev
 ---------
 
-  -
+  - [!!!BUGFIX] Fix Ngnix config for resources to work with Neos 2.0
 
 0.0.2
 -----

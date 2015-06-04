@@ -10,6 +10,9 @@ reusable package which can easily be maintained and serves well for the standard
 Development will continue further as the package is already reused in several projects.
 Contributions and feedback are very welcome.
 
+*Note:* the current master branch only work with Neos 2.0 version or above. If your Neos version is below 2.0,
+please use 0.0.* tag of this package.
+
 ## Install docker
 
     https://docs.docker.com/installation/
