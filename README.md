@@ -1,16 +1,16 @@
-# Dockerflow helps you developing TYPO3 Flow and Neos projects
+# Dockerflow helps you developing Flow Framework and Neos CMS projects
 
-DockerFlow creates the necessary Docker containers (webserver, database, php, mail) to run 
-your TYPO3 Flow/Neos project. The package provides a wrapper script in `bin/dockerflow` which simplifies the 
-handling of docker and does all the configuration necessary.
+DockerFlow creates the necessary Docker containers (webserver, database, php, mail) to run
+your Flow Framework or Neos CMS project. The package provides a wrapper script in `bin/dockerflow`
+which simplifies the handling of docker and does all the configuration necessary.
 
-We created this package to make development on TYPO3 Flow and Neos projects easier and to create a simple 
-reusable package which can easily be maintained and serves well for the standard project.
+We created this package to make development on Flow Framework and Neos CMS projects easier and
+to create a simple reusable package which can easily be maintained and serves well for the standard project.
 
 Development will continue further as the package is already reused in several projects.
 Contributions and feedback are very welcome.
 
-*Note:* the current master branch only work with Neos 2.0 version or above. If your Neos version is below 2.0,
+*Note:* the current master branch only work with Neos version 2.0 or above. If your Neos version is below 2.0,
 please use 0.0.* tag of this package.
 
 ## Install docker
@@ -74,11 +74,11 @@ This will show the running containers. The `data` container can be inactive to d
 
     FLOW_CONTEXT=Production bin/dockerflow up -d
     
-## Runnig flow commands
+## Running flow commands
 
-We added a little helper to run Flow commands without the whole path. Example:
+    bin/dockerflow run app ./flow help
 
-    bin/dockerflow run app flow --help
+    FLOW_CONTEXT=Production bin/dockerflow run app ./flow flow:cache:flush --force
 
 ## Keep Flow caches in the container to improve performance (especially with boot2docker)
 
@@ -126,7 +126,7 @@ host machine through `3307` port.
 ## Running functional test for Flow package
 
 DockerFlow installs by default `sqlite` in the base image so that functional tests can be run out-of-the-box.
-Example below is for running all functional tests of TYPO3.Flow package in one-off command:
+Example below is for running all functional tests of Flow Framework package in one-off command:
 
     bin/dockerflow run app /var/www/bin/phpunit -c /var/www/Build/BuildEssentials/PhpUnit/FunctionalTests.xml /var/www/Packages/Framework/TYPO3.Flow/Tests/Functional/
 

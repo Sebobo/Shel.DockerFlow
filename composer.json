@@ -1,6 +1,6 @@
 {
   "name": "shel/dockerflow",
-  "description": "Docker Compose structure to quickly startup TYPO3 Flow/Neos projects",
+  "description": "Docker Compose structure to quickly startup Flow Framework or Neos CMS projects",
   "license": "MIT",
   "require": {
     "typo3/flow": "*"

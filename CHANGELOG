@@ -1,9 +1,10 @@
 CHANGELOG
 =========
 
-0.0.3-dev
+0.1.0-dev
 ---------
 
+  - [BUGFIX]    Flow context doesn't pass through the one-off command
   - [!!!BUGFIX] Fix Ngnix config for resources to work with Neos 2.0
 
 0.0.2

@@ -33,8 +33,12 @@ echo "###"
 echo "### DockerFlow is now running action '${action}' ###"
 echo "####"
 
-# Wrap docker-compose command to use config from package
-${wrapped_command} $*
+# Wrap docker-compose command to use config from package, passing Flow context on run action
+if [ "$action" = "run" ]; then
+	${wrapped_command} $1 -e FLOW_CONTEXT=${DOCKER_FLOW_CONTEXT} ${*:2}
+else
+	${wrapped_command} $*
+fi
 
 # Print information about running app container
 if [ "$action" = "up" ]; then
