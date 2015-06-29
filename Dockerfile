@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php5-imagick \
     sqlite \
     php5-sqlite \
+    php5-curl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Copy configuration files for php
