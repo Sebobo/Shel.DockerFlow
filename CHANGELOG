@@ -4,6 +4,7 @@ CHANGELOG
 0.1.0-dev
 ---------
 
+  - [TASK]      Create nginx vhost for testing context
   - [TASK]      Add libcurl
   - [BUGFIX]    Flow context doesn't pass through the one-off command
   - [!!!BUGFIX] Fix Ngnix config for resources to work with Neos 2.0
