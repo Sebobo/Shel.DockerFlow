@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Check if docker and docker-compose are installed
+command -v docker >/dev/null 2>&1 || { echo "docker is not installed. Aborting." >&2; exit 1; }
+command -v docker-compose >/dev/null 2>&1 || { echo "docker-compose is not installed. Aborting." >&2; exit 1; }
+
 dirname=`pwd`
 package_dir="Packages/Libraries/shel/dockerflow"
 config_dir="${package_dir}/Configuration"
@@ -28,10 +32,11 @@ sed -e "s/DOCKER_FLOW_SERVERNAME/${DOCKER_FLOW_SERVERNAME}/g;s/DOCKER_FLOW_CONTE
 sed -e "s/DOCKER_FLOW_SERVERNAME/test.${DOCKER_FLOW_SERVERNAME}/g;s/DOCKER_FLOW_CONTEXT/${DOCKER_FLOW_CONTEXT}\/Testing/g" ${config_dir}/Web/nginx_vhost.conf >> ${config_dir}/Web/nginx_vhost_merged.conf
 
 echo "####"
-echo "### Project name: ${projectname} ###"
-echo "### FLOW_CONTEXT: ${DOCKER_FLOW_CONTEXT} ###"
+echo "### Project name    : ${projectname}"
+echo "### FLOW_CONTEXT    : ${DOCKER_FLOW_CONTEXT}"
+echo "### Testing context : ${DOCKER_FLOW_CONTEXT}/Testing"
 echo "###"
-echo "### DockerFlow is now running action '${action}' ###"
+echo "### DockerFlow is now running action '${action}'"
 echo "####"
 
 # Wrap docker-compose command to use config from package, passing Flow context on run action
@@ -45,6 +50,7 @@ fi
 if [ "$action" = "up" ]; then
 	used_port=`${wrapped_command} port web ${DOCKER_FLOW_PORT} | sed 's/^.*\:\([0-9]*\).*$/\1/g'`
 	echo "####"
-	echo "### Done! Your app is running here: ${projectname}:${used_port}"
+	echo "### Done! Your app is running here  : ${projectname}:${used_port}"
+	echo "### Testing context is running here : test.${projectname}:${used_port}"
 	echo "####"
 fi

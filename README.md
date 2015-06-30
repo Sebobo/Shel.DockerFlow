@@ -62,6 +62,9 @@ The default database configuration for your `Settings.yaml` is:
             host: db
             driver: pdo_mysql
 
+Also note that there is a second database `dockerflow_test` available for your testing context. The testing context url
+would be `test.hostname` and this hostname should be added to your `/etc/hosts` too.
+
 ## Check the status
 
     bin/dockerflow ps
@@ -73,7 +76,16 @@ This will show the running containers. The `data` container can be inactive to d
 ## Using different FLOW_CONTEXT
 
     FLOW_CONTEXT=Production bin/dockerflow up -d
-    
+
+Dockerflow also setup a sub-context for testing depends on the current context you are running. In the above example,
+it would be `Production/Testing`. Anyway, you can only use the parent context with the `bin/dockerflow` command. So when
+there is a need to execute command for the testing context, you need to first get into `app` container and then call the
+command prefixed by the context variable.
+
+    FLOW_CONTEXT=Production bin/dockerflow up -d
+    bin/dockerflow run app /bin/bash
+    FLOW_CONTEXT=Production/Testing ./flow doctrine:migrate
+
 ## Running flow commands
 
     bin/dockerflow run app ./flow help
