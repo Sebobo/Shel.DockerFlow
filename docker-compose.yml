@@ -25,11 +25,15 @@ db:
   image: mariadb:10.0
   volumes_from:
     - data
+  volumes:
+    - Packages/Libraries/shel/dockerflow/Scripts/EntryPoint/db.sh:/entrypoint.sh:ro
   ports:
     - "3307:3306"
+  entrypoint: /entrypoint.sh
+  command: mysqld
   environment:
     MYSQL_ROOT_PASSWORD: root
-    MYSQL_DATABASE: dockerflow
+    MYSQL_DATABASE: dockerflow dockerflow_test
 
 web:
   image: nginx:1.7

@@ -11,7 +11,7 @@ if [ -d /var/www ]; then
 	# Check status of directory owner and guest account
 	user_exists=false
 	guest_exists=false
-	getent passwd $user_id >/dev/null 2>&1 && user_exists=true
+	getent passwd ${user_id} >/dev/null 2>&1 && user_exists=true
 	getent passwd guest >/dev/null 2>&1 && guest_exists=true
 
 	# Check if user does not exist in passwd
@@ -19,11 +19,11 @@ if [ -d /var/www ]; then
 		if [ "$guest_exists" = false ]; then
 			# Create user for volume access so writing to the project works fine
 			echo "User $user_id does not yet exist. Adding..."
-			adduser --system --uid=$user_id --gid=$user_group --home /home/guest --shell /bin/bash guest
+			adduser --system --uid=${user_id} --gid=${user_group} --home /home/guest --shell /bin/bash guest
 		else
 			# Change uid of guest user to new uid
 			echo "Changing guests id to $user_id"
-			usermod -u $user_id guest
+			usermod -u ${user_id} guest
 		fi
 	fi
 fi
