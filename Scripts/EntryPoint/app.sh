@@ -28,5 +28,8 @@ if [ -d /var/www ]; then
 	fi
 fi
 
+host_ip=`/sbin/ip route|awk '/default/ { print $3 }'`
+echo "${host_ip}	dockerhost" >> /etc/hosts
+
 # Run normal command
 exec "$@"

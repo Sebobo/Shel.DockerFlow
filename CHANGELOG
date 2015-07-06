@@ -4,6 +4,7 @@ CHANGELOG
 2.3.0-dev
 ---------
 
+  - [TASK]      Add docker host IP to /etc/hosts of container
   - [TASK]      Check for docker and docker-compose when running dockerflow
   - [FEATURE]   Extend db entrypoint to support multiple database creation
   - [TASK]      Create nginx vhost for testing context
