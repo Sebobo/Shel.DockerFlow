@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-2.3.0-dev
----------
+2.3.0
+-----
 
   - [TASK]      Add docker host IP to /etc/hosts of container
   - [TASK]      Check for docker and docker-compose when running dockerflow
