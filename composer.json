@@ -3,7 +3,7 @@
   "description": "Docker Compose structure to quickly startup Flow Framework or Neos CMS projects",
   "license": "MIT",
   "require": {
-    "typo3/flow": "*"
+    "typo3/flow": "2.3.*"
   },
   "authors": [
     {
