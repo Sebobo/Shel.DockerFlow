@@ -1,9 +1,15 @@
 CHANGELOG
 =========
 
-3.0.0-dev
----------
+3.0-dev
+-------
 
+  -
+
+3.0.0
+-----
+
+  - [FEATURE]   Add Redis container and example configuration for Flow caches
   - [TASK]      Add docker host IP to /etc/hosts of container
   - [TASK]      Check for docker and docker-compose when running dockerflow
   - [FEATURE]   Extend db entrypoint to support multiple database creation

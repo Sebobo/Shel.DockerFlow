@@ -1,6 +1,6 @@
 # Dockerflow helps you developing Flow Framework and Neos CMS projects
 
-DockerFlow creates the necessary Docker containers (webserver, database, php, mail) to run
+DockerFlow creates the necessary Docker containers (webserver, database, php, mail, redis) to run
 your Flow Framework or Neos CMS project. The package provides a wrapper script in `bin/dockerflow`
 which simplifies the handling of docker and does all the configuration necessary.
 
@@ -101,6 +101,32 @@ Add this configuration to your `Settings.yaml` in Flow:
         utility:
           environment:
             temporaryDirectoryBase: /tmp/dockerflow/Temporary/
+
+## Using Redis backends for optimizing certain caches
+
+For caches that has tags, Neos becomes slow with lots of content. Add the following to your `Caches.yaml` to
+store those mentioned caches in Redis instead:
+
+    TYPO3_TypoScript_Content:
+      backend: TYPO3\Flow\Cache\Backend\RedisBackend
+      backendOptions:
+        hostname: 'redis'
+        port: '6379'
+        database: 0
+
+    Flow_Mvc_Routing_Resolve:
+      backend: TYPO3\Flow\Cache\Backend\RedisBackend
+      backendOptions:
+        hostname: 'redis'
+        port: '6379'
+        database: 0
+
+    Flow_Mvc_Routing_Route:
+      backend: TYPO3\Flow\Cache\Backend\RedisBackend
+      backendOptions:
+        hostname: 'redis'
+        port: '6379'
+        database: 0
 
 ## Using MailHog to test mailing
 
