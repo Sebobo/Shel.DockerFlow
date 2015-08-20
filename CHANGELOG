@@ -4,7 +4,7 @@ CHANGELOG
 2.3-dev
 -------
 
-  -
+  - [FEATURE] Add Redis container and example configuration for Flow caches
 
 2.3.0
 -----

@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     sqlite \
     php5-sqlite \
     php5-curl \
+    php5-redis \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set workdir to project root
