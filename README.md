@@ -10,8 +10,10 @@ to create a simple reusable package which can easily be maintained and serves we
 Development will continue further as the package is already reused in several projects.
 Contributions and feedback are very welcome.
 
-*Note:* the current 2.3 branch only work with Neos version below 2.0. If your Neos version is 2.0 or above,
-please use master branch of this package.
+*Note:* Starting from release 3.0.1 which also provides the backward compatibility for resource rewrite rules,
+that version is able to support both Flow version 3.0 and 2.3 or below. So this dedicated branch for Flow 2.3
+is now obsolete and will not get any more updates. Please use the latest version of this package to get the latest
+features provided.
 
 ## Install docker
 
