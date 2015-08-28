@@ -10,9 +10,6 @@ to create a simple reusable package which can easily be maintained and serves we
 Development will continue further as the package is already reused in several projects.
 Contributions and feedback are very welcome.
 
-*Note:* the current master branch only work with Neos version 2.0 or above. If your Neos version is below 2.0,
-please use 2.3 branch of this package.
-
 ## Install docker
 
     https://docs.docker.com/installation/
@@ -148,7 +145,7 @@ Send emails from your Flow app and have fun.
 
     bin/dockerflow run SERVICE /bin/bash
 
-SERVICE can currently be `app`, `web`, `data` or `db`.
+SERVICE can currently be `app`, `web`, `data`, `db` or `redis`.
 
 ## Access database inside container from docker host
 
@@ -161,7 +158,7 @@ host machine through `3307` port.
 
 ![Screenshot of MySQL Workbench interface](/docs/MySQL-Workbench.png "MySQL Workbench interface")
 
-## Running functional test for Flow package
+## Running functional tests for Flow package
 
 DockerFlow installs by default `sqlite` in the base image so that functional tests can be run out-of-the-box.
 Example below is for running all functional tests of Flow Framework package in one-off command:
