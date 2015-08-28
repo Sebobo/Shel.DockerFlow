@@ -131,11 +131,11 @@ Add this configuration to your`Settings.yaml`:
 
     TYPO3:
       SwiftMailer:
-         transport:
-           type: 'Swift_SmtpTransport'
-           options:
-             host: 'mail'
-             port: 1025
+        transport:
+          type: 'Swift_SmtpTransport'
+          options:
+            host: 'mail'
+            port: 1025
 
 And open `MyNeosProject:8025` in your browser (use your own hostname) to see your mails.
 
