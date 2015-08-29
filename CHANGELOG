@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-3.0-dev
--------
+3.0.1
+-----
 
   - [FEATURE] Add elasticsearch container
   - [TASK]    Add rewrite rule backward compatibility for Neos 1.2
@@ -10,14 +10,23 @@ CHANGELOG
 3.0.0
 -----
 
-  - [FEATURE]   Add Redis container and example configuration for Flow caches
+  - [!!!BUGFIX] Fix Ngnix config for resources to work with Neos 2.0
+
+2.3.1
+-----
+
+  - [TASK]    Update README for last 2.3 branch support
+  - [FEATURE] Add Redis container and example configuration for Flow caches
+
+2.3.0
+-----
+
   - [TASK]      Add docker host IP to /etc/hosts of container
   - [TASK]      Check for docker and docker-compose when running dockerflow
   - [FEATURE]   Extend db entrypoint to support multiple database creation
   - [TASK]      Create nginx vhost for testing context
   - [TASK]      Add libcurl
   - [BUGFIX]    Flow context doesn't pass through the one-off command
-  - [!!!BUGFIX] Fix Ngnix config for resources to work with Neos 2.0
 
 0.0.2
 -----
