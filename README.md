@@ -1,6 +1,6 @@
 # Dockerflow helps you developing Flow Framework and Neos CMS projects
 
-DockerFlow creates the necessary Docker containers (webserver, database, php, mail, redis) to run
+DockerFlow creates the necessary Docker containers (webserver, database, php, mail, redis, elasticsearch) to run
 your Flow Framework or Neos CMS project. The package provides a wrapper script in `bin/dockerflow`
 which simplifies the handling of docker and does all the configuration necessary.
 
@@ -141,11 +141,23 @@ And open `MyNeosProject:8025` in your browser (use your own hostname) to see you
 
 Send emails from your Flow app and have fun.
 
+## Configure ElasticSearch with `flowpack/elasticsearch` package
+
+Add this configuration to your`Settings.yaml`:
+
+    Flowpack:
+      ElasticSearch:
+        clients:
+          default:
+            -
+              host: elasticsearch
+              port: 9200
+
 ## Running a shell in one of the service containers
 
     bin/dockerflow run SERVICE /bin/bash
 
-SERVICE can currently be `app`, `web`, `data`, `db` or `redis`.
+SERVICE can currently be `app`, `web`, `data`, `db`, `redis` or `elasticsearch`.
 
 ## Access database inside container from docker host
 

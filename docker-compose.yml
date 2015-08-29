@@ -13,6 +13,7 @@ app:
     - db
     - mail
     - redis
+    - elasticsearch
 
 # Passive data container which only provides a shared filesystem for the other containers
 data:
@@ -57,3 +58,10 @@ redis:
   image: redis:3.0
   ports:
     - "6379:6379"
+
+elasticsearch:
+  image: elasticsearch:1.4
+  ports:
+    - "9200:9200"
+  volumes:
+    - Packages/Libraries/shel/dockerflow/Configuration/ElasticSearch/config.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro

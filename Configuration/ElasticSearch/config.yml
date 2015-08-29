@@ -1,0 +1,9 @@
+script.disable_dynamic: sandbox
+script.groovy.sandbox.class_whitelist: java.util.LinkedHashMap
+script.groovy.sandbox.receiver_whitelist: java.util.Iterator, java.lang.Object, java.util.Map, java.util.Map$Entry
+script.groovy.sandbox.enabled: true
+node.name: elasticsearch
+cluster.name: dockerflow
+network.host: 0.0.0.0
+index.number_of_shards: 1
+index.number_of_replicas: 0
