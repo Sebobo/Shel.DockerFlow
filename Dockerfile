@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php5-curl \
     php5-redis \
     php5-ldap \
+    php5-xdebug \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set workdir to project root

@@ -153,6 +153,20 @@ Add this configuration to your`Settings.yaml`:
               host: elasticsearch
               port: 9200
 
+## Configure remote debugging from your host to container
+
+DockerFlow installs by the default xdebug with the following config on the server:
+
+    xdebug.remote_enable = On
+    xdebug.remote_host = 'dockerhost'
+    xdebug.remote_port = '9001'
+    xdebug.max_nesting_level = 500
+
+So you can do remote debugging from your host to the container through port 9001. From your IDE, you need to configure
+the port accordingly. If you are using PHPStorm, this link may be useful for you to configure your IDE properly.
+
+- http://whyunowork.com/2015/09/03/xdebug-flow-and-neos-with-phpstorm/
+
 ## Running a shell in one of the service containers
 
     bin/dockerflow run SERVICE /bin/bash

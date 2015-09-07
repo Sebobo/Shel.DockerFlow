@@ -4,7 +4,8 @@ CHANGELOG
 3.0-dev
 -------
 
-  - [TASK] Add php5-ldap module to app container
+  - [FEATURE] Enable remote debugging from host to container
+  - [TASK]    Add php5-ldap module to app container
 
 3.0.1
 -----
