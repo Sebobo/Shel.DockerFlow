@@ -4,7 +4,7 @@ CHANGELOG
 3.0-dev
 -------
 
-  -
+  - [BUGFIX] Prevent error from non-executable script
 
 3.0.2
 -----

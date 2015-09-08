@@ -31,6 +31,9 @@ DOCKER_FLOW_CONTEXT=${FLOW_CONTEXT:=Development}
 sed -e "s/DOCKER_FLOW_SERVERNAME/${DOCKER_FLOW_SERVERNAME}/g;s/DOCKER_FLOW_CONTEXT/${DOCKER_FLOW_CONTEXT}/g" ${config_dir}/Web/nginx_vhost.conf > ${config_dir}/Web/nginx_vhost_merged.conf
 sed -e "s/DOCKER_FLOW_SERVERNAME/test.${DOCKER_FLOW_SERVERNAME}/g;s/DOCKER_FLOW_CONTEXT/${DOCKER_FLOW_CONTEXT}\/Testing/g" ${config_dir}/Web/nginx_vhost.conf >> ${config_dir}/Web/nginx_vhost_merged.conf
 
+# Make sure all entrypoint scripts are executable
+chmod +x ${package_dir}/Scripts/EntryPoint/*.sh
+
 echo "####"
 echo "### Project name    : ${projectname}"
 echo "### FLOW_CONTEXT    : ${DOCKER_FLOW_CONTEXT}"
