@@ -28,8 +28,12 @@ if [ -d /var/www ]; then
 	fi
 fi
 
-host_ip=`/sbin/ip route|awk '/default/ { print $3 }'`
-echo "${host_ip}	dockerhost" >> /etc/hosts
+# Update app container host file to be able to access host machine
+export DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')
+echo "${DOCKER_HOST_IP}	dockerhost" >> /etc/hosts
+
+# Update app container host file to be able to access web container
+cat /ip_address.txt >> /etc/hosts
 
 # Run normal command
 exec "$@"

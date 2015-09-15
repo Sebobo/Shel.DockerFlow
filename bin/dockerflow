@@ -34,6 +34,9 @@ sed -e "s/DOCKER_FLOW_SERVERNAME/test.${DOCKER_FLOW_SERVERNAME}/g;s/DOCKER_FLOW_
 # Make sure all entrypoint scripts are executable
 chmod +x ${package_dir}/Scripts/EntryPoint/*.sh
 
+# Create placeholder for storing web ip
+touch ${config_dir}/Web/ip_address.txt
+
 echo "####"
 echo "### Project name    : ${projectname}"
 echo "### FLOW_CONTEXT    : ${DOCKER_FLOW_CONTEXT}"
@@ -49,8 +52,12 @@ else
 	${wrapped_command} $*
 fi
 
-# Print information about running app container
 if [ "$action" = "up" ]; then
+	# Get ip address of web container, store in ip_address.txt file and send it to app container
+	${wrapped_command} run -e PROJECT_NAME=${projectname} web /entrypoint.sh
+	${wrapped_command} run app /entrypoint.sh
+
+	# Print information about running app container
 	used_port=`${wrapped_command} port web ${DOCKER_FLOW_PORT} | sed 's/^.*\:\([0-9]*\).*$/\1/g'`
 	echo "####"
 	echo "### Done! Your app is running here  : ${projectname}:${used_port}"

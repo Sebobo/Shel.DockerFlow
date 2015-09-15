@@ -2,11 +2,14 @@
 app:
   # For development of the image comment out the 'image' line and replace with the next line
   #build: Packages/Libraries/shel/dockerflow/
-  image: sebobo/shel.dockerflow:latest
+  image: sebobo/shel.dockerflow:3.0.3
   hostname: dockerflow
   domainname: dev
   volumes_from:
     - data
+  volumes:
+    - Packages/Libraries/shel/dockerflow/Configuration/Web/ip_address.txt:/ip_address.txt:ro
+    - Packages/Libraries/shel/dockerflow/Scripts/EntryPoint/app.sh:/entrypoint.sh:ro
   expose:
     - "9000"
   links:
@@ -44,6 +47,8 @@ web:
   volumes:
     - Packages/Libraries/shel/dockerflow/Configuration/Web/nginx.conf:/etc/nginx/nginx.conf:ro
     - Packages/Libraries/shel/dockerflow/Configuration/Web/nginx_vhost_merged.conf:/etc/nginx/conf.d/default.conf:ro
+    - Packages/Libraries/shel/dockerflow/Configuration/Web/ip_address.txt:/ip_address.txt:rw
+    - Packages/Libraries/shel/dockerflow/Scripts/EntryPoint/web.sh:/entrypoint.sh:ro
   volumes_from:
     - data
   links:

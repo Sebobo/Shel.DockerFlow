@@ -35,7 +35,13 @@ This makes it much faster (still not as fast as on linux).
 
 ## Install dockerflow into your distribution
 
-Add `shel/dockerflow@dev-master` as dev dependency and run `composer install`.
+Add `shel/dockerflow` as dev dependency in your composer, using the latest stable release is highly recommended.
+
+*Example*:
+
+```
+composer require --dev shel/dockerflow 3.0.*
+```
 
 ## Run dockerflow
 
@@ -172,6 +178,27 @@ the port accordingly. If you are using PHPStorm, this link may be useful for you
     bin/dockerflow run SERVICE /bin/bash
 
 SERVICE can currently be `app`, `web`, `data`, `db`, `redis` or `elasticsearch`.
+
+## Access project url when inside `app` container
+
+As of current docker doesn't support bi-directional link, you cannot access web container from app container.
+But in some case you will need this connection. For example in behat tests without selenium, you need the url of
+your site in `Testing` context while running the tests has to be done inside the `app` container.
+
+Dockerflow adds additional script after starting all containers to fetch the IP address of web container and
+append it to `/etc/hosts` inside app container as below:
+
+```
+WEB_CONTAINER_IP    project-url
+WEB_CONTAINER_IP    test.project-url
+```
+
+You need to define the default test suite url in your `behat.yml` to use `http://test.project-url:8080` and then you can
+run the behat tests without having to connect external selenium server
+
+```
+bin/dockerflow run app bin/behat -c Path/To/Your/Package/Tests/Behaviour/behat.yml
+```
 
 ## Access database inside container from docker host
 

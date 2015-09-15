@@ -1,3 +1,4 @@
 *.sublime-project
 *.sublime-workspace
-Configuration/Web/nginx_vhost_merged.conf
+/Configuration/Web/nginx_vhost_merged.conf
+/Configuration/Web/ip_address.txt
