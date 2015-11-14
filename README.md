@@ -12,13 +12,13 @@ Contributions and feedback are very welcome.
 
 ## Install docker
 
-    https://docs.docker.com/installation/
+    https://docs.docker.com/installation/ (tested with docker v1.9)
 
 ## Install docker-compose
 
 We use docker-compose to do all the automatic configuration:
 
-    http://docs.docker.com/compose/install/
+    http://docs.docker.com/compose/install/ (tested with docker-compose v1.5)
 
 The repository contains a Dockerfile which will automatically be built in the
 [docker hub](https://registry.hub.docker.com/u/sebobo/shel.dockerflow/) after each change
