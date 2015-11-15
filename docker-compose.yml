@@ -47,7 +47,7 @@ web:
   volumes:
     - ./Configuration/Web/nginx.conf:/etc/nginx/nginx.conf:ro
     - ./Configuration/Web/nginx_vhost_merged.conf:/etc/nginx/conf.d/default.conf:ro
-    - ./Configuration/Web/ip_address.txt:/ip_address.txt:ro
+    - ./Configuration/Web/ip_address.txt:/ip_address.txt:rw
     - ./Scripts/EntryPoint/web.sh:/entrypoint.sh:ro
   volumes_from:
     - data
