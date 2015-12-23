@@ -11,6 +11,12 @@
       "email": "sebastian@helzle.net",
       "homepage": "http://www.sebastianhelzle.net",
       "role": "Developer"
+    },
+    {
+      "name": "Visay Keo",
+      "email": "visay@web-essentials.asia",
+      "homepage": "http://www.visay.info",
+      "role": "Developer"
     }
   ],
   "bin": [

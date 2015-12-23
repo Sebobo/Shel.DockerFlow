@@ -47,15 +47,15 @@ echo "####"
 
 # Wrap docker-compose command to use config from package, passing Flow context on run action
 if [ "$action" = "run" ]; then
-	${wrapped_command} $1 -e FLOW_CONTEXT=${DOCKER_FLOW_CONTEXT} ${*:2}
+	${wrapped_command} $1 --rm -e FLOW_CONTEXT=${DOCKER_FLOW_CONTEXT} ${*:2}
 else
 	${wrapped_command} $*
 fi
 
 if [ "$action" = "up" ]; then
 	# Get ip address of web container, store in ip_address.txt file and send it to app container
-	${wrapped_command} run -e PROJECT_NAME=${projectname} web /entrypoint.sh
-	${wrapped_command} run app /entrypoint.sh
+	${wrapped_command} run --rm -e PROJECT_NAME=${projectname} web /entrypoint.sh
+	${wrapped_command} run --rm app /entrypoint.sh
 
 	# Print information about running app container
 	used_port=`${wrapped_command} port web ${DOCKER_FLOW_PORT} | sed 's/^.*\:\([0-9]*\).*$/\1/g'`
