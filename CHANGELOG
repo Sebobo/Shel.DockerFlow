@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+3.3.0
+-----
+
+  - [FEATURE] Build app container with php 7.0 support
+
 3.2.0
 -----
 

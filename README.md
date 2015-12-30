@@ -14,13 +14,13 @@ Contributions and feedback are very welcome.
 
 ## Install docker
 
-    https://docs.docker.com/installation/ (tested with docker v1.9 - v1.12)
+    https://docs.docker.com/installation/ (tested with docker v1.9 - v17.03)
 
 ## Install docker-compose
 
 We use docker-compose to do all the automatic configuration:
 
-    http://docs.docker.com/compose/install/ (tested with docker-compose v1.5 - v1.6)
+    http://docs.docker.com/compose/install/ (tested with docker-compose v1.5 - v1.11)
 
 The repository contains a Dockerfile which will automatically be built in the
 [docker hub](https://registry.hub.docker.com/u/sebobo/shel.dockerflow/) after each change
@@ -251,7 +251,6 @@ With this you can work in a running container instead of creating a new one.
 # Further reading
 
 * [blog post on php-fpm](http://mattiasgeniar.be/2014/04/09/a-better-way-to-run-php-fpm/)
-* [nginx+php-fpm+mysql tutorial](http://www.lonelycoder.be/nginx-php-fpm-mysql-phpmyadmin-on-ubuntu-12-04/)
 * [Docker documentation](http://docs.docker.com/reference/builder/)
 * [docker-compose documentation](http://docs.docker.com/compose)
 * [nginx.conf for Flow](https://gist.github.com/iwyg/4c8c0c0dec21dcfc8969)
