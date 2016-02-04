@@ -2,7 +2,7 @@
 app:
   # For development of the image comment out the 'image' line and replace with the next line
   #build: .
-  image: sebobo/shel.dockerflow:latest
+  image: sebobo/shel.dockerflow:3.0.6
   hostname: dockerflow
   domainname: dev
   volumes_from:
@@ -17,6 +17,7 @@ app:
     - mail
     - redis
     - elasticsearch
+    - couchdb
 
 # Passive data container which only provides a shared filesystem for the other containers
 data:
@@ -70,3 +71,8 @@ elasticsearch:
     - "9200:9200"
   volumes:
     - ./Configuration/ElasticSearch/config.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+
+couchdb:
+  image: klaemo/couchdb:1.6
+  ports:
+    - "5984:5984"

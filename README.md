@@ -1,7 +1,7 @@
 # Dockerflow helps you developing Flow Framework and Neos CMS projects
 
-DockerFlow creates the necessary Docker containers (webserver, database, php, mail, redis, elasticsearch) to run
-your Flow Framework or Neos CMS project. The package provides a wrapper script in `bin/dockerflow`
+DockerFlow creates the necessary Docker containers (webserver, database, php, mail, redis, elasticsearch, couchdb)
+to run your Flow Framework or Neos CMS project. The package provides a wrapper script in `bin/dockerflow`
 which simplifies the handling of docker and does all the configuration necessary.
 
 We created this package to make development on Flow Framework and Neos CMS projects easier and
@@ -180,7 +180,7 @@ the port accordingly. If you are using PHPStorm, this link may be useful for you
 
     bin/dockerflow run SERVICE /bin/bash
 
-SERVICE can currently be `app`, `web`, `data`, `db`, `redis` or `elasticsearch`.
+SERVICE can currently be `app`, `web`, `data`, `db`, `redis`, `elasticsearch` or `couchdb`.
 
 ## Access project url when inside `app` container
 
@@ -223,6 +223,21 @@ Example below is for running all functional tests of Flow Framework package in o
 
 Make sure you run composer install with `--dev` mode when setting up your Flow project
 and adjust the path to the test directory of your own package.
+
+## Access CouchDB
+
+From your host machine, you can access couchdb from web interface or command line:
+
+__Web__: [http://0.0.0.0:5984/_utils/](http://0.0.0.0:5984/_utils/)
+
+__Cli__: `curl -X GET http://0.0.0.0:5984/_all_dbs`
+
+From inside your `app` container, you can also access couchdb through the command line:
+
+```
+bin/dockerflow run app /bin/bash
+curl -X GET http://couchdb:5984/_all_dbs
+```
 
 ## Attach to a running service
 
