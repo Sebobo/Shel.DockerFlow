@@ -4,6 +4,7 @@ CHANGELOG
 3.0-dev
 -------
 
+  - [IMP] Allow wildcard sub domain hostname
   - [TASK] Add imagemagick command in app container
 
 3.0.5

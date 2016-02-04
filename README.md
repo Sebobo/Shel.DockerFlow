@@ -46,10 +46,13 @@ composer require --dev shel/dockerflow 3.0.*
 ## Run dockerflow
 
     bin/dockerflow up -d
-    
-The command will echo the url with which you can access your project.
-Add the hostname then to your `/etc/hosts` and set the ip to your docker host (default for linux is 0.0.0.0)
-or your boot2docker ip. The parameter `-d` will keep it running in the background until you run:
+
+The command will echo the url with which you can access your project. Add the hostname then to your `/etc/hosts`
+and set the ip to your docker host (default for linux is 0.0.0.0) or your boot2docker ip. You can also use any
+subdomain with `*.hostname` and it will point to the same server. What you need to do is to add exact subdomain name
+to your `/etc/hosts`.
+
+The parameter `-d` will keep it running in the background until you run:
 
     bin/dockerflow stop
 
