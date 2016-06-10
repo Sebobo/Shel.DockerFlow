@@ -36,7 +36,7 @@ db:
   ports:
     - "3307:3306"
   entrypoint: /entrypoint.sh
-  command: mysqld
+  command: mysqld --user=root
   environment:
     MYSQL_ROOT_PASSWORD: root
     MYSQL_DATABASE: dockerflow dockerflow_test
