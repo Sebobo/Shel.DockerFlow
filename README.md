@@ -196,7 +196,7 @@ WEB_CONTAINER_IP    project-url
 WEB_CONTAINER_IP    test.project-url
 ```
 
-You need to define the default test suite url in your `behat.yml` to use `http://test.project-url:8080` and then you can
+You need to define the default test suite url in your `behat.yml` to use `http://test.project-url` and then you can
 run the behat tests without having to connect external selenium server
 
 ```

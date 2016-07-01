@@ -22,7 +22,7 @@ wrapped_command="docker-compose -p \"${projectname}\" -f ${package_dir}/docker-c
 DOCKER_FLOW_SERVERNAME=${projectname}
 
 # Default port for dockerflow
-DOCKER_FLOW_PORT=8080
+DOCKER_FLOW_PORT=80
 
 # Use Development context if Flow Context is not set
 DOCKER_FLOW_CONTEXT=${FLOW_CONTEXT:=Development}
@@ -58,9 +58,8 @@ if [ "$action" = "up" ]; then
 	${wrapped_command} run --rm app /entrypoint.sh
 
 	# Print information about running app container
-	used_port=`${wrapped_command} port web ${DOCKER_FLOW_PORT} | sed 's/^.*\:\([0-9]*\).*$/\1/g'`
 	echo "####"
-	echo "### Done! Your app is running here  : ${projectname}:${used_port}"
-	echo "### Testing context is running here : test.${projectname}:${used_port}"
+	echo "### Done! Your app is running here  : ${projectname}"
+	echo "### Testing context is running here : test.${projectname}"
 	echo "####"
 fi

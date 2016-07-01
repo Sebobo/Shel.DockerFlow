@@ -44,7 +44,7 @@ db:
 web:
   image: nginx:1.7
   ports:
-    - "8080:8080"
+    - "80:80"
   volumes:
     - ./Configuration/Web/nginx.conf:/etc/nginx/nginx.conf:ro
     - ./Configuration/Web/nginx_vhost_merged.conf:/etc/nginx/conf.d/default.conf:ro
