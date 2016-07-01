@@ -2,7 +2,7 @@
 app:
   # For development of the image comment out the 'image' line and replace with the next line
   #build: .
-  image: sebobo/shel.dockerflow:php7
+  image: visay/shel.dockerflow:php7
   hostname: dockerflow
   domainname: dev
   volumes_from:
