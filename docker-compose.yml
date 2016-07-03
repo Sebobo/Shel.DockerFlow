@@ -2,7 +2,7 @@
 app:
   # For development of the image comment out the 'image' line and replace with the next line
   #build: .
-  image: sebobo/shel.dockerflow:3.0.6
+  image: sebobo/shel.dockerflow:3.0.8
   hostname: dockerflow
   domainname: dev
   volumes_from:
