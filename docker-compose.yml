@@ -2,7 +2,7 @@
 app:
   # For development of the image comment out the 'image' line and replace with the next line
   #build: .
-  image: sebobo/shel.dockerflow:3.0.8
+  image: sebobo/shel.dockerflow:3.0.9
   hostname: dockerflow
   domainname: dev
   volumes_from:
@@ -18,6 +18,8 @@ app:
     - redis
     - elasticsearch
     - couchdb
+  environment:
+    - HOST_USER_ID
 
 # Passive data container which only provides a shared filesystem for the other containers
 data:

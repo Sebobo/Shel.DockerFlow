@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+3.0.9
+-----
+
+  - [TASK] Support for mac docker with volume ownership
+
+3.0.8
+-----
+
+  - [TASK] Fix image version in previous release
+
 3.0.7
 -----
 

@@ -5,7 +5,7 @@ set -e
 
 # Get id of the owner
 if [ -d /var/www ]; then
-	user_id=`stat -c "%u" /var/www`
+	user_id=${HOST_USER_ID}
 	user_group=50
 
 	# Check status of directory owner and guest account
