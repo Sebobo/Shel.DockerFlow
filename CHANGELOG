@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+3.1.0
+-----
+
+  - [FEATURE] Dynamic domain with local dns container
+
 3.0.9
 -----
 

@@ -2,9 +2,7 @@
 app:
   # For development of the image comment out the 'image' line and replace with the next line
   #build: .
-  image: sebobo/shel.dockerflow:3.0.9
-  hostname: dockerflow
-  domainname: dev
+  image: sebobo/shel.dockerflow:3.1.0
   volumes_from:
     - data
   volumes:
@@ -44,6 +42,7 @@ db:
     MYSQL_DATABASE: dockerflow dockerflow_test
 
 web:
+  hostname: "${PROJECT_NAME}"
   image: nginx:1.7
   ports:
     - "8080:8080"
@@ -58,6 +57,7 @@ web:
     - app
 
 mail:
+  hostname: "${PROJECT_NAME}-mailhog"
   image: mailhog/mailhog:latest
   ports:
     - "8025:8025"
@@ -68,6 +68,7 @@ redis:
     - "6379:6379"
 
 elasticsearch:
+  hostname: "${PROJECT_NAME}-elasticsearch"
   image: elasticsearch:1.4
   ports:
     - "9200:9200"
@@ -75,6 +76,7 @@ elasticsearch:
     - ./Configuration/ElasticSearch/config.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
 
 couchdb:
+  hostname: "${PROJECT_NAME}-couchdb"
   image: klaemo/couchdb:1.6
   ports:
     - "5984:5984"

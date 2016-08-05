@@ -12,26 +12,22 @@ Contributions and feedback are very welcome.
 
 ## Install docker
 
-    https://docs.docker.com/installation/ (tested with docker v1.9)
+    https://docs.docker.com/installation/ (tested with docker v1.9 - v1.12)
 
 ## Install docker-compose
 
 We use docker-compose to do all the automatic configuration:
 
-    http://docs.docker.com/compose/install/ (tested with docker-compose v1.5)
+    http://docs.docker.com/compose/install/ (tested with docker-compose v1.5 - v1.6)
 
 The repository contains a Dockerfile which will automatically be built in the
 [docker hub](https://registry.hub.docker.com/u/sebobo/shel.dockerflow/) after each change
 and used by docker-compose to build the necessary containers.
 
-## On a Mac or Windows install boot2docker
+## On a Mac or Windows
 
-    http://boot2docker.io
-    
-You will not have a performance as good as on linux but it's workable.
-Checkout the [boot2docker support](https://github.com/Sebobo/Shel.DockerFlow/tree/boot2docker-support) branch of
-dockerflow for a Vagrantfile which builds a boot2docker instance with working NFS shared.
-This makes it much faster (still not as fast as on linux).
+It has been tested working with docker for Mac but not yet with docker for Windows.
+Feel free to try out and let us know if you cannot wait.
 
 ## Install dockerflow into your distribution
 
@@ -40,17 +36,17 @@ Add `shel/dockerflow` as dev dependency in your composer, using the latest stabl
 *Example*:
 
 ```
-composer require --dev shel/dockerflow 3.0.*
+composer require --dev shel/dockerflow 3.1.*
 ```
 
 ## Run dockerflow
 
     bin/dockerflow up -d
 
-The command will echo the url with which you can access your project. Add the hostname then to your `/etc/hosts`
-and set the ip to your docker host (default for linux is 0.0.0.0) or your boot2docker ip. You can also use any
-subdomain with `*.hostname` and it will point to the same server. What you need to do is to add exact subdomain name
-to your `/etc/hosts`.
+The command will echo the url with which you can access your project. Since version `3.1`, the hostname is pointed automatically 
+to the `web` container so you can start browsing right away without adding entry to `/etc/hosts` like before.
+
+You can also use any subdomain with `*.hostname` but you need to point each of them manually in your `/etc/hosts`, e.g: `0.0.0.0 test.hostname`.
 
 The parameter `-d` will keep it running in the background until you run:
 
@@ -98,7 +94,7 @@ command prefixed by the context variable.
 
     FLOW_CONTEXT=Production bin/dockerflow run app ./flow flow:cache:flush --force
 
-## Keep Flow caches in the container to improve performance (especially with boot2docker)
+## Keep Flow caches in the container to improve performance
 
 Add this configuration to your `Settings.yaml` in Flow:
 
@@ -146,7 +142,7 @@ Add this configuration to your`Settings.yaml`:
             host: 'mail'
             port: 1025
 
-And open `MyNeosProject:8025` in your browser (use your own hostname) to see your mails.
+And open `hostname-mailhog:8025` in your browser (replace `hostname` with your project name) to see your mails.
 
 Send emails from your Flow app and have fun.
 
@@ -228,9 +224,9 @@ and adjust the path to the test directory of your own package.
 
 From your host machine, you can access couchdb from web interface or command line:
 
-__Web__: [http://0.0.0.0:5984/_utils/](http://0.0.0.0:5984/_utils/)
+__Web__: [http://hostname-couchdb:5984/_utils/](http://hostname-couchdb:5984/_utils/) -> replace `hostname` with project name
 
-__Cli__: `curl -X GET http://0.0.0.0:5984/_all_dbs`
+__Cli__: `curl -X GET http://hostname-couchdb:5984/_all_dbs`
 
 From inside your `app` container, you can also access couchdb through the command line:
 
