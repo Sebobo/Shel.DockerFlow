@@ -27,7 +27,7 @@ and used by docker-compose to build the necessary containers.
 ## On a Mac or Windows
 
 It has been tested working with docker for Mac but not yet with docker for Windows.
-Feel free to try out and let us know if you cannot wait.
+Feel free to try it out and let us know if you cannot wait.
 
 ## Install dockerflow into your distribution
 
@@ -43,10 +43,10 @@ composer require --dev shel/dockerflow 3.1.*
 
     bin/dockerflow up -d
 
-The command will echo the url with which you can access your project. Since version `3.1`, the hostname is pointed automatically 
-to the `web` container so you can start browsing right away without adding entry to `/etc/hosts` like before.
-
-You can also use any subdomain with `*.hostname` but you need to point each of them manually in your `/etc/hosts`, e.g: `0.0.0.0 test.hostname`.
+The command will echo the url with which you can access your project. Add the hostname then to your `/etc/hosts`
+and set the ip to your docker host (default for linux is 0.0.0.0) or your boot2docker ip. You can also use any
+subdomain with `*.hostname` and it will point to the same server. What you need to do is to add exact subdomain name
+to your `/etc/hosts`.
 
 The parameter `-d` will keep it running in the background until you run:
 
@@ -142,7 +142,7 @@ Add this configuration to your`Settings.yaml`:
             host: 'mail'
             port: 1025
 
-And open `hostname-mailhog:8025` in your browser (replace `hostname` with your project name) to see your mails.
+And open `MyNeosProject:8025` in your browser (use your own hostname) to see your mails.
 
 Send emails from your Flow app and have fun.
 
@@ -224,9 +224,9 @@ and adjust the path to the test directory of your own package.
 
 From your host machine, you can access couchdb from web interface or command line:
 
-__Web__: [http://hostname-couchdb:5984/_utils/](http://hostname-couchdb:5984/_utils/) -> replace `hostname` with project name
+__Web__: [http://0.0.0.0:5984/_utils/](http://0.0.0.0:5984/_utils/)
 
-__Cli__: `curl -X GET http://hostname-couchdb:5984/_all_dbs`
+__Cli__: `curl -X GET http://0.0.0.0:5984/_all_dbs`
 
 From inside your `app` container, you can also access couchdb through the command line:
 

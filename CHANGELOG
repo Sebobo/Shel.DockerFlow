@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+3.1-dev
+-------
+
+  - Revert "[FEATURE] Dynamic domain with local dns container"
+
 3.1.0
 -----
 
