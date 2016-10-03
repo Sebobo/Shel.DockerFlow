@@ -1,5 +1,7 @@
 # Dockerflow helps you developing Flow Framework and Neos CMS projects
 
+[![](https://images.microbadger.com/badges/image/sebobo/shel.dockerflow.svg)](https://microbadger.com/images/sebobo/shel.dockerflow "Get your own image badge on microbadger.com")
+
 DockerFlow creates the necessary Docker containers (webserver, database, php, mail, redis, elasticsearch, couchdb)
 to run your Flow Framework or Neos CMS project. The package provides a wrapper script in `bin/dockerflow`
 which simplifies the handling of docker and does all the configuration necessary.
