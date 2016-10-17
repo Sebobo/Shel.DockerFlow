@@ -26,10 +26,11 @@ DOCKER_FLOW_PORT=8080
 
 # Use Development context if Flow Context is not set
 DOCKER_FLOW_CONTEXT=${FLOW_CONTEXT:=Development}
+ESCAPED_DOCKER_FLOW_CONTEXT=$(echo "$DOCKER_FLOW_CONTEXT" | sed 's/\//\\\//g')
 
 # Replace the markers in the merge config file
-sed -e "s/DOCKER_FLOW_SERVERNAME/test.${DOCKER_FLOW_SERVERNAME}/g;s/DOCKER_FLOW_CONTEXT/${DOCKER_FLOW_CONTEXT}\/Testing/g" ${config_dir}/Web/nginx_vhost.conf > ${config_dir}/Web/nginx_vhost_merged.conf
-sed -e "s/DOCKER_FLOW_SERVERNAME/${DOCKER_FLOW_SERVERNAME} *.${DOCKER_FLOW_SERVERNAME}/g;s/DOCKER_FLOW_CONTEXT/${DOCKER_FLOW_CONTEXT}/g" ${config_dir}/Web/nginx_vhost.conf >> ${config_dir}/Web/nginx_vhost_merged.conf
+sed -e "s/DOCKER_FLOW_SERVERNAME/test.${DOCKER_FLOW_SERVERNAME}/g;s/DOCKER_FLOW_CONTEXT/${ESCAPED_DOCKER_FLOW_CONTEXT}\/Testing/g" ${config_dir}/Web/nginx_vhost.conf > ${config_dir}/Web/nginx_vhost_merged.conf
+sed -e "s/DOCKER_FLOW_SERVERNAME/${DOCKER_FLOW_SERVERNAME} *.${DOCKER_FLOW_SERVERNAME}/g;s/DOCKER_FLOW_CONTEXT/${ESCAPED_DOCKER_FLOW_CONTEXT}/g" ${config_dir}/Web/nginx_vhost.conf >> ${config_dir}/Web/nginx_vhost_merged.conf
 
 # Make sure all entrypoint scripts are executable
 chmod +x ${package_dir}/Scripts/EntryPoint/*.sh
