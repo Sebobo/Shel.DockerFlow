@@ -37,6 +37,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php7.0-imagick \
     php7.0-redis \
     php7.0-xdebug \
+    php7.0-zip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set workdir to project root
