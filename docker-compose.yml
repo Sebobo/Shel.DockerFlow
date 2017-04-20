@@ -2,7 +2,7 @@
 app:
   # For development of the image comment out the 'image' line and replace with the next line
   #build: .
-  image: sebobo/shel.dockerflow:3.2.0
+  image: sebobo/shel.dockerflow:php7
   volumes_from:
     - data
   volumes:
