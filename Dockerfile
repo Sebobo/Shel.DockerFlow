@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php7.0-mysql \
     php7.0-gd \
     php7.0-mbstring \
+    php7.0-mcrypt \
     php7.0-xml \
     php7.0-curl \
     php7.0-ldap \
