@@ -67,7 +67,7 @@ The default database configuration for your `Settings.yaml` is:
             driver: pdo_mysql
 
 Also note that there is a second database `dockerflow_test` available for your testing context. The testing context url
-would be `test.hostname` and this hostname should be added to your `/etc/hosts` too.
+would be `test-hostname` and this hostname should be added to your `/etc/hosts` too.
 
 ## Check the status
 
@@ -191,10 +191,10 @@ append it to `/etc/hosts` inside app container as below:
 
 ```
 WEB_CONTAINER_IP    project-url
-WEB_CONTAINER_IP    test.project-url
+WEB_CONTAINER_IP    test-project-url
 ```
 
-You need to define the default test suite url in your `behat.yml` to use `http://test.project-url:8080` and then you can
+You need to define the default test suite url in your `behat.yml` to use `http://test-project-url:8080` and then you can
 run the behat tests without having to connect external selenium server
 
 ```

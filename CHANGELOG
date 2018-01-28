@@ -4,6 +4,12 @@ CHANGELOG
 3.3-dev
 ----------
 
+  -
+
+3.3.1
+-----
+
+  - [TASK] Avoid subdomain for testing context url
   - [TASK] Add php-mcrypt module to app container
 
 3.3.0
