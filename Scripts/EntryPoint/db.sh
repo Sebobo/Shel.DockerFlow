@@ -34,7 +34,7 @@ if [ "$1" = 'mysqld' ]; then
 
 		if [ "$MYSQL_DATABASE" ]; then
 			for DATABASE in $MYSQL_DATABASE; do
-				echo "CREATE DATABASE IF NOT EXISTS \`$DATABASE\` DEFAULT CHARSET utf8 COLLATE utf8_unicode_ci ;" >> "$tempSqlFile"
+				echo "CREATE DATABASE IF NOT EXISTS \`$DATABASE\` DEFAULT CHARSET utf8mb4 COLLATE utf8mb4 ;" >> "$tempSqlFile"
 			done
 		fi
 
