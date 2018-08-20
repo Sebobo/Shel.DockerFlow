@@ -21,14 +21,14 @@ app:
 
 # Passive data container which only provides a shared filesystem for the other containers
 data:
-  image: mariadb:10.0
+  image: mariadb:10.3
   command: echo "Data container has started"
   volumes:
     - ../../../..:/var/www
     - /var/lib/mysql
 
 db:
-  image: mariadb:10.0
+  image: mariadb:10.3
   volumes_from:
     - data
   volumes:

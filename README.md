@@ -38,7 +38,7 @@ Add `shel/dockerflow` as dev dependency in your composer, using the latest stabl
 *Example*:
 
 ```
-composer require --dev shel/dockerflow 3.1.*
+composer require --dev shel/dockerflow 5.0.*
 ```
 
 ## Run dockerflow
