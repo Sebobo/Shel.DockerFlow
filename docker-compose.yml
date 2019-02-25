@@ -49,6 +49,8 @@ web:
     - ./Configuration/Web/nginx.conf:/etc/nginx/nginx.conf:ro
     - ./Configuration/Web/nginx_vhost_merged.conf:/etc/nginx/conf.d/default.conf:ro
     - ./Configuration/Web/ip_address.txt:/ip_address.txt:rw
+    - ./Configuration/certs/wehost.asia.crt:/etc/ssl/certs/wehost.asia.crt:ro
+    - ./Configuration/certs/wehost.asia.key:/etc/ssl/private/wehost.asia.key:ro
     - ./Scripts/EntryPoint/web.sh:/entrypoint.sh:ro
   volumes_from:
     - data
